@@ -36,6 +36,7 @@
             border: 3px solid white;
             outline: none;
             cursor: pointer;
+            box-shadow: 0px 31px 53px 5px rgba(255, 255, 255, 0.58);
 
         }
     </style>
@@ -48,6 +49,7 @@
             <button onclick="start()">Start</button>
             <button onclick="pause()">Pause</button>
             <button onclick="clear()">Clear</button>
+
         </div>
     </div>
 </body>
@@ -72,19 +74,12 @@
 
     }
     function clear(e) {
-        timer = false
-        hour = 0
-        minut = 0
-        sec = 0
-        millisec = 0
-
-        document.getElementById('headding').innerText = `${hour}:${minut}:${sec}:${millisec}`
-
+        timer = 'clear'
 
     }
 
     var stopwatch = setInterval(function watch() {
-        if (timer) {
+        if (timer == true) {
 
 
             millisec++
@@ -101,6 +96,12 @@
                 minut = 0
             }
 
+        } else if (timer == 'clear') {
+
+            hour = 0
+            minut = 0
+            sec = 0
+            millisec = 0
         }
 
         document.getElementById('headding').innerText = `${hour}:${minut}:${sec}:${millisec}`
