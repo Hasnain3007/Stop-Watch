@@ -7,7 +7,7 @@
     <title>Stop Watch</title>
     <style>
         * {
-            border: 1px solid white;
+            /* border: 1px solid white; */
         }
 
         body {
@@ -16,15 +16,17 @@
 
         .container {
             display: flex;
-            justify-content: end;
+            justify-content: center;
             flex-direction: column;
             align-items: center;
-            height: 50vh;
+            height: 80vh;
         }
 
         h1 {
             color: coral;
+            font-size: 100px;
         }
+
 
         button {
             width: 100px;
@@ -52,15 +54,43 @@
 
 <script>
 
-    var millisec = 10; sec = 0; minut = 0; hour = 0;
-    var timer;
+    var millisec = 0;
+    var sec = 0;
+    var minut = 0;
+    var hour = 0;
+    var stopwatch = 0
+    var timer = false;
+
+
     function start() {
-        timer = setInterval(function timing() {
+        timer = true
+
+
+    }
+    function pause() {
+        timer = false
+
+    }
+    function clear(e) {
+        timer = false
+        hour = 0
+        minut = 0
+        sec = 0
+        millisec = 0
+
+        document.getElementById('headding').innerText = `${hour}:${minut}:${sec}:${millisec}`
+
+
+    }
+
+    var stopwatch = setInterval(function watch() {
+        if (timer) {
+
+
             millisec++
-            if (millisec > 100) {
+            if (millisec >= 100) {
                 sec++
                 millisec = 0
-
             }
             if (sec >= 60) {
                 minut++
@@ -71,20 +101,12 @@
                 minut = 0
             }
 
+        }
 
+        document.getElementById('headding').innerText = `${hour}:${minut}:${sec}:${millisec}`
 
-            document.getElementById('headding').innerText = `${hour}:${minut}:${sec}:${millisec}`
-        }, 10)
-    }
-    function clear() {
-        clearInterval(timer())
-        millisec = 0
-        sec = 0
-        minut = 0
-        hour = 0
+    }, 10)
 
-
-    }
 </script>
 
 </html>
