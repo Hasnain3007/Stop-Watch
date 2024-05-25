@@ -48,7 +48,7 @@
         <div class="buttons">
             <button onclick="start()">Start</button>
             <button onclick="pause()">Pause</button>
-            <button onclick="clear()">Clear</button>
+            <button onclick="blank()">Clear</button>
 
         </div>
     </div>
@@ -73,10 +73,19 @@
         timer = false
 
     }
-    function clear(e) {
-        timer = 'clear'
+
+    function blank() {
+        hour = 0
+        minut = 0
+        sec = 0
+        millisec = 0
+        document.getElementById('headding').innerText = `${hour}:${minut}:${sec}:${millisec}`
+        // document.getElementById('headding').innerHTML = "0:0:0:0"
+        location.reload()
 
     }
+
+
 
     var stopwatch = setInterval(function watch() {
         if (timer == true) {
@@ -96,17 +105,12 @@
                 minut = 0
             }
 
-        } else if (timer == 'clear') {
-
-            hour = 0
-            minut = 0
-            sec = 0
-            millisec = 0
         }
 
         document.getElementById('headding').innerText = `${hour}:${minut}:${sec}:${millisec}`
 
     }, 10)
+
 
 </script>
 
